@@ -19,14 +19,14 @@ public:
 	Bird() = default;
 
 	void init(int x, int y, int s) {
-		posX = x;
-		posY = y;
+		posX = float(x);
+		posY = float(y);
 		sprite.init("assets/bird/idle.png", x, y, 32, 32, s);
 	}
 
 	void restart(int x, int y, int s) {
-		posX = x;
-		posY = y;
+		posX = float(x);
+		posY = float(x);
 		vel = 0;
 		accel = 1;
 	}
@@ -46,5 +46,9 @@ public:
 
 	float getVel() {
 		return vel;
+	}
+
+	void setVel(int v) {
+		vel = float(v);
 	}
 };

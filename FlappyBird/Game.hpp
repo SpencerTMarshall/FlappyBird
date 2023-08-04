@@ -2,6 +2,7 @@
 
 #include "SDL.h"
 #include "SDL_image.h"
+#include "SDL_ttf.h"
 #include <vector>
 
 class Game {
@@ -13,6 +14,7 @@ public:
 	void init(const char* title, int xpos, int ypos, int width, int height);
 	void restart();
 
+	void startMenu();
 
 	void handleEvents();
 	void update();
