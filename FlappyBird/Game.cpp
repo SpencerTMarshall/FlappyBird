@@ -2,12 +2,16 @@
 #include <iostream>
 #include "Bird.hpp"
 #include "PipeManager.hpp"
+#include "Score.hpp"
+#include <string>
+#include <iostream>
 
 SDL_Renderer* Game::renderer;
 SDL_Event Game::events;
 
 Bird bird;
 Manager manager;
+Score score;
 
 void Game::startMenu() {
 	TTF_Font* comic_shanns = TTF_OpenFont("assets/comic_shanns.ttf", 24);
@@ -59,11 +63,14 @@ void Game::init(const char* title, int xpos, int ypos, int width, int height) {
 	SDL_SetRenderDrawColor(renderer, 0, 0, 255, 255);
 
 	bird.init(200, 150, 1);
+	score.init();
 }
 
 void Game::restart() {
+	std::cout << "You scored: " << std::to_string(score.getScore()) << "\n";
 	bird.restart(200, 150, 1);
 	manager.restart();
+	score.init();
 
 	isDead = false;
 }
@@ -95,7 +102,7 @@ void Game::update() {
 		count--;
 	}
 
-	manager.refresh();
+	score.add(manager.refresh());
 	isDead = manager.AABB(bird.update());
 
 	manager.update();
@@ -105,6 +112,7 @@ void Game::render() {
 	SDL_RenderClear(renderer);
 	bird.draw();
 	manager.draw();
+	score.draw();
 	SDL_RenderPresent(renderer);
 }
 

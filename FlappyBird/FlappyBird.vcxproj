@@ -146,6 +146,7 @@
     <ClInclude Include="Game.hpp" />
     <ClInclude Include="Pipe.hpp" />
     <ClInclude Include="PipeManager.hpp" />
+    <ClInclude Include="Score.hpp" />
     <ClInclude Include="Sprite.hpp" />
     <ClInclude Include="TextureManager.hpp" />
   </ItemGroup>

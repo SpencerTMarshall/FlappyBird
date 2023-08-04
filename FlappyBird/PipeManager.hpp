@@ -16,7 +16,7 @@ public:
 
 	void update();
 	void draw();
-	void refresh();
+	int refresh();
 	void createPipe();
 
 	bool AABB(SDL_Rect& bird);

@@ -34,11 +34,14 @@ void Manager::draw() {
 	}
 }
 
-void Manager::refresh() {
+int Manager::refresh() {
+	int x = pipeList.size();
 	std::erase_if(pipeList, 
 		[=](Pipe* a) {
 			return a->getX() <= -width;
 		});
+
+	return x - pipeList.size();
 }
 
 void Manager::createPipe() {
